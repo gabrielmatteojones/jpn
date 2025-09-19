@@ -1,55 +1,12 @@
 ---
-layout: base
+layout: default
 ---
+    <main class="max-w-5xl mx-auto px-6 py-12">
+      {% if page.title %}
+        <h1 class="text-3xl font-bold mb-6">{{ page.title }}</h1>
+      {% endif %}
 
-<section class="it-hero-wrapper it-overlay it-bottom-overlapping-content">
-   <div class="img-responsive-wrapper">
-      <div class="img-responsive">
-         <div class="img-wrapper"><img src="{{ page.image}}" title="titolo immagine" alt="descrizione immagine"></div>
-      </div>
-   </div>
-</section>
-<div class="container">
-   <div class="row">
-      <div class="col-12"> <!-- <div class="col-12 col-lg-10 offset-lg-1"> e card-space nel wrapper>-->
-         <div class="col-12 mb-3 mb-md-4">
-            <!--start it-card-->
-            <article class="it-card rounded shadow border px-5 py-4">
-            <!--card first child is the title (link)-->
-            <h3 class="it-card-title h4">
-               {{ page.title }}
-            </h3>
-            <!--card body content-->
-
-            <div class="it-card-body">
-                  <div class="avatar-wrapper avatar-extra-text">
-                    {% assign a = site.data.authors[page.author] %}
-                    <div class="avatar size-xl">
-                      <img src="{{ a.Img }}" alt="{{ a.Nome }}">
-                    </div>
-                    <div class="extra-text">
-                      <h4><a href="{{ a.link }}">{{ a.Nome }}</a></h4>
-                      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%d %b %Y" }}</time>
-                    </div>
-                  </div>
-                  <p class="it-card-text">{{ page.description }}</p>
-                </div>
-            </article>
-            <!--end it-card-->
-         </div>
-      </div>
-   </div>
-</div>
-
-
-
-<article class="container my-4">
-  <div class="entry">
-    {{ content }}
-  </div>
-  <div class="date">
-    Scritto il {{ page.date | date: "%d/%m/%Y" }}
-  </div>
-
-  {% include disqus.html %}
-</article>
+      <article class="prose lg:prose-xl">
+        {{ content }}
+      </article>
+    </main>
