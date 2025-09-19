@@ -1,20 +1,76 @@
 ---
 layout: default
 ---
-    {% if page.title %}
-      <h1 class="text-4xl font-extrabold tracking-tight text-gray-900 mb-4">
-        {{ page.title }}
-      </h1>
-    {% endif %}
 
-    <!-- Metadata -->
-    {% if page.date %}
-      <p class="text-sm text-gray-500 mb-10">
-        Pubblicato il {{ page.date | date: "%d %B %Y" }}
-      </p>
-    {% endif %}
+<main class="container px-4 md:px-6 py-12">
+  <div class="mb-8">
+    <a href="{{ '/' | relative_url }}">
+      <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="m12 19-7-7 7-7"></path>
+          <path d="M19 12H5"></path>
+        </svg>
+        Torna agli articoli
+      </button>
+    </a>
+  </div>
 
-    <!-- Contenuto -->
-    <div class="prose prose-lg prose-gray max-w-none leading-relaxed">
-      {{ content }}
+  <article class="max-w-4xl mx-auto">
+    <div class="rounded-lg shadow-sm shadow-literary border-0 bg-card text-card-foreground">
+      <header class="flex flex-col space-y-1.5 p-6 pb-6">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold bg-accent text-accent-foreground">
+            {{ page.category }}
+          </span>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-serif font-bold text-foreground leading-tight mb-6">
+          {{ page.title }}
+        </h1>
+        <div class="flex flex-wrap items-center gap-6 text-sm text-muted-foreground border-b border-border pb-6">
+          <div class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M8 2v4"></path><path d="M16 2v4"></path>
+              <rect width="18" height="18" x="3" y="4" rx="2"></rect>
+              <path d="M3 10h18"></path>
+            </svg>
+            {{ page.date | date: "%Y-%m-%d" }}
+          </div>
+          <div class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            {{ page.reading_time | default: "5 min" }}
+          </div>
+        </div>
+      </header>
+
+      <div class="p-6 pt-0 prose prose-lg max-w-none">
+        {{ content }}
+      </div>
     </div>
+
+    <div class="flex flex-wrap gap-4 mt-8 justify-center">
+      <button class="inline-flex items-center gap-2 bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-md h-10 px-4 py-2">
+        ❤️ Mi piace
+      </button>
+      <button class="inline-flex items-center gap-2 border border-input bg-background hover:bg-accent hover:text-accent-foreground rounded-md h-10 px-4 py-2">
+        🔗 Condividi
+      </button>
+      <button class="inline-flex items-center gap-2 border border-input bg-background hover:bg-accent hover:text-accent-foreground rounded-md h-10 px-4 py-2">
+        💬 Commenta
+      </button>
+    </div>
+
+    <div class="mt-16 text-center">
+      <h3 class="text-2xl font-serif font-bold text-foreground mb-8">
+        Altri articoli che potrebbero interessarti
+      </h3>
+      <a href="{{ '/' | relative_url }}">
+        <button class="inline-flex items-center justify-center gap-2 rounded-md h-10 px-4 py-2 bg-primary text-primary-foreground hover:bg-primary/90">
+          📖 Esplora tutti gli articoli
+        </button>
+      </a>
+    </div>
+  </article>
+</main>
