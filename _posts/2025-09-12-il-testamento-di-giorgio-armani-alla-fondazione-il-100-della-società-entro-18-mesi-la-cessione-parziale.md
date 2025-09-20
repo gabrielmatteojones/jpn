@@ -19,8 +19,6 @@ ref: ANSA, AFP, Bloomberg, Forbes, Financial Times
 author: gabriel
 lang: Italiano
 ---
-# Il testamento di Giorgio Armani: alla Fondazione il 100% della società, entro 18 mesi la cessione parziale
-
 Giorgio Armani, scomparso a 91 anni, ha lasciato due testamenti in forma segreta, rispettivamente del 15 marzo e del 5 aprile 2025. Il contenuto dei documenti stabilisce con chiarezza il futuro della **Giorgio Armani Spa** e del patrimonio personale dello stilista, assicurando continuità, indipendenza e rispetto dei valori fondanti del marchio.
 
 ### La Fondazione Armani proprietaria della società
