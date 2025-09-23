@@ -2,22 +2,37 @@
 layout: default
 ---
 
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="{{ '/' | relative_url }}">Home</a></li>
+<div class="container my-5">
+  <article class="card shadow-lg">
+    {% if page.image %}
+    <img src="{{ page.image }}" class="card-img-top" alt="{{ page.title }}">
+    {% endif %}
 
-    {% assign url_parts = page.url | split: '/' | reject: '' %}
-    {% assign path_accum = '' %}
+    <div class="card-body">
+      <h1 class="card-title display-4">{{ page.title }}</h1>
+      <p class="text-muted">
+        <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>
+        {% if page.author %} | by {{ page.author }}{% endif %}
+      </p>
 
-    {% for part in url_parts %}
-      {% assign path_accum = path_accum | append: '/' | append: part %}
-      {% if forloop.last %}
-        <li class="breadcrumb-item active" aria-current="page">{{ part | replace:'-',' ' | capitalize }}</li>
-      {% else %}
-        <li class="breadcrumb-item">
-          <a href="{{ path_accum | relative_url }}">{{ part | replace:'-',' ' | capitalize }}</a>
-        </li>
-      {% endif %}
-    {% endfor %}
-  </ol>
-</nav>
+      <div class="card-text mt-4">
+        {{ content }}
+      </div>
+    </div>
+
+    <div class="card-footer bg-white">
+      <p class="mb-2">Condividi questo post:</p>
+      <div class="d-flex gap-3">
+        <a href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url }}" target="_blank" class="btn btn-outline-primary btn-sm">
+          Twitter
+        </a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" target="_blank" class="btn btn-outline-primary btn-sm">
+          Facebook
+        </a>
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url | absolute_url }}" target="_blank" class="btn btn-outline-primary btn-sm">
+          LinkedIn
+        </a>
+      </div>
+    </div>
+  </article>
+</div>
