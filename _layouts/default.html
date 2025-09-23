@@ -82,26 +82,6 @@ title: Articoli
   </div>
 </nav>
 
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="{{ '/' | relative_url }}">Home</a></li>
-
-    {% assign url_parts = page.url | split: '/' | reject: '' %}
-    {% assign path_accum = '' %}
-
-    {% for part in url_parts %}
-      {% assign path_accum = path_accum | append: '/' | append: part %}
-      {% if forloop.last %}
-        <li class="breadcrumb-item active" aria-current="page">{{ part | replace:'-',' ' | capitalize }}</li>
-      {% else %}
-        <li class="breadcrumb-item">
-          <a href="{{ path_accum | relative_url }}">{{ part | replace:'-',' ' | capitalize }}</a>
-        </li>
-      {% endif %}
-    {% endfor %}
-  </ol>
-</nav>
-
 
 {{ content }}
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
